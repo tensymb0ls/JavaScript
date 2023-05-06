@@ -1,0 +1,21 @@
+html {
+    box-sizing: border-box;
+}
+*, *:after, *:before {
+    box-sizing: inherit;
+}
+.box {
+    width: 400px;
+    height: 400px;
+    background-color: rgb(84, 20, 20);
+    color: white;
+    padding-left: 50px;
+    border: 10px solid grey;
+}
+.item {
+    width: 33.3%;
+    height: 50px;
+    background-color: rgb(52, 85, 19);
+    border: 2px solid grey;
+    float: left;
+}
