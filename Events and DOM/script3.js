@@ -22,7 +22,7 @@ let add = function () {
         elemBtnDel.append('X');
         elemLi.appendChild(elemBtnDel);
         todoList.appendChild(elemLi); // вставляем созданный тег с присвоенным текстовым значением в вэлемент ol c id todoList
-        console.dir(elemLi);
+        console.log(elemLi);
 
         // -------- изменение цвета -------------
         index++;
