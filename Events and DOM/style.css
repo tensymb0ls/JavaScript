@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: rgba(0, 13, 25, 0.656);
+  font-family: "Caveat", cursive;
+}
+.body {
+  display: flex;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  top: 20px;
+  left: 20px;
+  background-color: aliceblue;
+  align-items: center;
+  box-shadow: 0px 0px 10px rgb(24, 36, 47);
+  border-radius: 5px;
+}
+.slider {
+  display: flex;
+}
+.container {
+  display: flex;
+  flex: 1;
+  background-color: aliceblue;
+  padding: 20px;
+  justify-self: center;
+  gap: 70px;
+  margin: auto;
+}
+.todo {
+  flex: 1;
+  background-color: aliceblue;
+  box-shadow: 0px 0px 15px rgba(24, 36, 47, 0.559);
+  border-radius: 5px;
+  padding: 50px;
+  margin-right: 50px;
+}
+.todo ol li {
+  font-size: 24px;
+  padding: 15px;
+  background-color: #ff4a4a;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(128, 128, 128, 0.649);
+  width: max-content;
+}
+.pin {
+  position: absolute;
+  background-image: url(./Group\ 1.svg);
+  background-size: contain;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50% -50%);
+  top: 50px;
+  right: 90px;
+}
+#butPrev,
+#butNext {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: rgba(211, 211, 211, 0.547);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  display: flex;
+  font-size: 80px;
+  color: rgba(128, 128, 128, 0.631);
+  padding: 0 10px;
+}
+#butPrev:hover,
+#butNext:hover {
+  background-color: lightgray;
+  color: grey;
+}
+#pic_с {
+  height: 80vh;
+  width: 30vw;
+  overflow: hidden;
+}
+#pic {
+  width: 100%;
+  min-height: 100%;
+}
