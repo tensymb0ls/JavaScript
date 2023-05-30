@@ -3,10 +3,10 @@ const butNext = document.getElementById('butNext');
 const pic = document.getElementById('pic');
 
 const images = [
-    "./123.gif",
-    "./1234.gif",
-    "./12345.gif",
-    "./123456.gif"
+    "./1.jfif",
+    "./2.jfif",
+    "./3.jfif",
+    "./4.jfif"
 ]
 console.dir(pic);
 

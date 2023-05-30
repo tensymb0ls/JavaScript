@@ -1,8 +1,16 @@
 const item = document.getElementById('item');
 const addItem = document.getElementById('addItem');
 const todoList = document.getElementById('todoList');
+// Массив цветов для фона
+const colors = [
+    "#624aff",
+    "#ff4a4a",
+    "#b7ff4a",
+    "#4affe7",
+    "#ff4a89"
+]
 
-addItem.onclick = function () {
+let add = function () {
     let text = item.value;
     console.log(text);
     if (text) {
@@ -14,7 +22,18 @@ addItem.onclick = function () {
         elemBtnDel.append('X');
         elemLi.appendChild(elemBtnDel);
         todoList.appendChild(elemLi); // вставляем созданный тег с присвоенным текстовым значением в вэлемент ol c id todoList
+        console.dir(elemLi);
 
+        // -------- изменение цвета -------------
+        index++;
+        elemLi.id = 'color'; // присваиваем id созданному элементу
+        const changeColor = document.getElementById('color');
+        changeColor.style.backgroundColor = colors[index];
+        console.log(index);
+        if (index > colors.length - 1) {
+            index = 0;
+        }
+        // --------------------------------------
         elemBtnDel.onclick = function (event) {
             elemBtnDel.parentElement.remove();
         }
@@ -22,3 +41,4 @@ addItem.onclick = function () {
 
     item.value = '';
 }
+addItem.onclick = add;
