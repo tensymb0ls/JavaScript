@@ -85,10 +85,10 @@ let add = function () {
 }
 addItem.onclick = add;
 // ------------------------------------------------------------
-const editItem = document.getElementById('edit');
-let displayItemFunction = function () {
-    const displayAcceptBtn = document.getElementById('accept');
-    displayAcceptBtn.style.display = 'block';
-}
-editItem.onclick = displayItemFunction;
+// const editItem = document.getElementById('edit');
+// let displayItemFunction = function () {
+//     const displayAcceptBtn = document.getElementById('accept');
+//     displayAcceptBtn.style.display = 'block';
+// }
+// editItem.onclick = displayItemFunction;
 // --------------------------------------------------------------
