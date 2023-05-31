@@ -11,7 +11,6 @@ const colors = [
 ]
 
 let add = function () {
-    let rand = Math.floor(Math.random() * colors.length);
     let text = item.value;
     console.log(text);
     if (text) {
@@ -23,17 +22,17 @@ let add = function () {
         elemBtnDel.append('X');
         elemLi.appendChild(elemBtnDel);
         todoList.appendChild(elemLi); // вставляем созданный тег с присвоенным текстовым значением в вэлемент ol c id todoList
-        console.dir(elemLi);
+        console.log(elemLi);
 
         // -------- изменение цвета -------------
         index++;
-        elemLi.id = `color-${index}`; // присваиваем id созданному элементу
-        const changeColor = document.getElementById(`color-${index}`);
-        changeColor.style.backgroundColor = colors[rand];
+        elemLi.id = 'color'; // присваиваем id созданному элементу
+        const changeColor = document.getElementById(`color - ${index}`);
+        changeColor.style.backgroundColor = colors[index];
         console.log(index);
-        // if (index > colors.length - 1) {
-        //     index = 0;
-        // }
+        if (index > colors.length - 1) {
+            index = 0;
+        }
         // --------------------------------------
         elemBtnDel.onclick = function (event) {
             elemBtnDel.parentElement.remove();
