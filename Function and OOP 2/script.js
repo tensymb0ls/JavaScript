@@ -3,11 +3,34 @@ const title = document.getElementById('iTitle');
 const author = document.getElementById('iAuthor');
 const year = document.getElementById('iYear');
 const primary = document.getElementById('primary');
+const div = document.getElementById('div');
+
 
 // DataBase
 const library = [];
 
 // functions
+const createOl = () => document.createElement('ol');
+const createLi = () => document.createElement('li');
+const createTextNode = (text) => document.createTextNode(text);
+const appentChildToElement = (parent, child) => parent.appendChild(child);
+
+function createOlItem() {
+    const elemOl = createOl();
+    const elemLi = createLi();
+    const isbnText = createTextNode(isbn.value);
+    const titleText = createTextNode(title.value);
+    const authorText = createTextNode(author.value);
+    const yearText = createTextNode(year.value);
+    appentChildToElement(elemLi, isbnText);
+    appentChildToElement(elemLi, titleText);
+    appentChildToElement(elemLi, authorText);
+    appentChildToElement(elemLi, yearText);
+    appentChildToElement(elemOl, elemLi);
+    appentChildToElement(div, elemOl);
+    console.log(isbnText);
+}
+
 function Book(isbn, title, author, year) {
     this.isbn = isbn;
     this.title = title;
@@ -35,14 +58,13 @@ function pushBookToLibrary() {
     year.value = '';
     printArray();
 }
-function createDisplayAddedBooks() {
 
-}
 function printArray() {
     for (let i = 0; i < library.length; i++) {
         console.log(library[i]);
     }
 }
-primary.onclick = pushBookToLibrary;
+// primary.onclick = pushBookToLibrary;
+primary.onclick = () => { createOlItem(); pushBookToLibrary(); }
 
 
