@@ -3,3 +3,77 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-x: hidden;
+  justify-content: center;
+  background-color: whitesmoke;
+}
+
+label {
+  font-size: 18px;
+  font-family: sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  margin-top: 5vh;
+}
+
+.container input,
+select {
+  border: none;
+  height: 35px;
+  box-shadow: 0px 0px 5px #00000050;
+  outline: none;
+  padding: 0 10px;
+  border-radius: 7px;
+  color: gray;
+}
+
+.container input:focus {
+  border-bottom: 1px solid lightgray;
+  outline: none;
+  transition: 0.5s;
+}
+
+.wrapper {
+  max-width: 400px;
+  width: 100%;
+  margin: 10px auto 0;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2em;
+}
+
+
+.primary {
+  margin-top: 5px;
+  padding: 15px 0;
+  border-radius: 15px;
+  background-color: rgb(121, 142, 171);
+  color: white;
+  font-size: 18px;
+}
+
+.secondary {
+  padding: 15px 0;
+  border-radius: 15px;
+  background-color: rgb(219, 68, 68);
+  color: white;
+  font-size: 18px;
+}
+
+.primary:hover,
+.secondary:hover {
+  box-shadow: 1px 1px 5px rgba(64, 56, 56, 0.623);
+  cursor: pointer;
+  transition: linear 0.2s;
+}

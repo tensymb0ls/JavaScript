@@ -35,13 +35,13 @@
 // printTime();
 // -------------------------------------------------------
 let t = setInterval(move, 10);
-
 const box = document.getElementById('box');
 console.dir(box);
 let position = 0;
+let tumbler = 0;
 function move() {
     box.style.top = position + 'px';
     box.style.left = position + 'px';
-    position <= 249 ? position++ : clearInterval(t);
-
+    position <= 249 && tumbler == 0 ? position++ : tumbler = 1;
+    position >= 0 && tumbler == 1 ? position-- : tumbler = 0;
 }
