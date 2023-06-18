@@ -11,7 +11,25 @@
 </head>
 
 <body>
+    <div class="container">
+        <h1>Add company and employee</h1>
+        <div class="wrapper" id="div">
+            <label for="company">Add new company</label>
+            <input required type="text" name="iCompany" id="iCompany" placeholder="Company name">
+            <button id="primary" class="primary">Add company</button>
 
+            <label for="iFirstName">Add employee</label>
+            <select name="company_list" id="company_list" aria-placeholder="Select company">
+                <option value="" disabled selected>Select company</option>
+            </select>
+            <input type="text" name="iId" id="iId" placeholder="Id">
+            <input type="text" name="iFirstName" id="iFirstName" placeholder="First name">
+            <input type="text" name="iLastName" id="iLastName" placeholder="Last name">
+            <input min="0" max="150" type="number" name="iAge" id="iAge" placeholder="Age">
+            <input min="0" type="number" name="iSalary" id="iSalary" placeholder="Salary">
+            <button id="secondary" class="secondary">Add employee</button>
+        </div>
+    </div>
 </body>
 
 </html>
