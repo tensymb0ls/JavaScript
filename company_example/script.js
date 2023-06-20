@@ -71,28 +71,30 @@ function addCompany() {
     appentChildToElement(elemOption, companyText);
     appentChildToElement(companyList, elemOption);
     const newCompany = new Company(company.value);
-    alert(`\"${company.value}\" company succesfully added`)
+    companyDb.push(newCompany); // Добавляем новую компанию в массив companyDb
+    alert(`\"${company.value}\" company successfully added`);
     company.value = '';
 }
 
 function addNewEmployee() {
-    const newEmployee = () => new Employee(id.value, firstName.value, lastName.value, age.value, salary.value)
-    console.log(newEmployee());
+    const newEmployee = new Employee(id.value, firstName.value, lastName.value, age.value, salary.value);
+    console.log(newEmployee);
     return newEmployee;
 }
-// <-- до сих пор работает
-// не могу понять как правильно вызвать метод addEmployee
-// для созданного выше сотрудника что бы добавить его в компанию
+
 function employeeToCompany() {
     const employee = addNewEmployee();
-    const company = companyList.value;
-    const add = company.addEmployee(employee);
-    console.log(add);
+    const selectedCompany = companyList.value;
+    const companyObj = companyDb.find(company => company.name === selectedCompany);
+    // Найдем объект компании в массиве companyDb
+    if (companyObj) {
+        companyObj.addEmployee(employee);
+        console.log("Employee added to company.");
+    } else {
+        console.log("Company not found.");
+    }
 }
-function pushToDb() {
-    const company = companyList.value;
-    companyDb.push(company);
-}
+
 function clear() {
     id.value = '';
     firstName.value = '';
@@ -103,7 +105,6 @@ function clear() {
 function click() {
     addNewEmployee();
     employeeToCompany();
-    pushToDb();
     printArray();
     clear();
 }
