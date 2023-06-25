@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <!-- библиотека EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <script type="text/javascript">
+        (function () {
+            // https://dashboard.emailjs.com/admin/account
+            emailjs.init('_PIEUPY2bkz6yOfCZ');
+        })();
+    </script>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            document.getElementById('form').addEventListener('submit', function (event) {
+                event.preventDefault(); // Остановка события по умолчанию
+                // generate a five digit number for the contact_number variable
+                // this.contact_number.value = Math.random() * 100000 | 0;
+                // these IDs from the previous steps
+                // emailjs.sendForm(serviceID, templateID, templateParams, publicKey);
+                emailjs.sendForm('service_h59d5yu', 'template_w9j0oii', this)
+                    .then(function () {
+                        console.log('SUCCESS!');
+                    }, function (error) {
+                        console.log('FAILED...', error);
+                    });
+            });
+        }
+    </script>
+    <!--  -->
+    <script src="./script.js" defer></script>
+</head>
+
+<body>
+
+    <form id="form" class="container">
+        <input type="text" placeholder="First Name" name="firstName" id="firstName">
+        <input type="text" placeholder="Last Name" name="lastName" id="lastName">
+        <input type="text" placeholder="Phone number" name="phone" id="phone">
+        <input type="text" placeholder="E-mail" name="e-mail" id="e-mail">
+        <input type="text" placeholder="Enter your message" name="message" id="message">
+        <input type="submit" name="Submit" id="sunmit">
+    </form>
+</body>
+
+</html>
