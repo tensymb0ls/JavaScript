@@ -1,0 +1,38 @@
+body {
+    padding: 0;
+    margin: 0 50px;
+}
+
+p {
+    font-size: 30px;
+    line-height: 30px;
+}
+
+.continer {
+    text-align: center;
+    width: 200px;
+}
+
+.wrapper {
+    position: relative;
+    width: 350px;
+    margin: auto;
+}
+
+#hour_style {
+    position: absolute;
+
+}
+
+#min_style {
+    position: absolute;
+    top: 55px;
+    left: 55px;
+
+}
+
+#sec_style {
+    position: absolute;
+    top: 90px;
+    left: 90px;
+}
