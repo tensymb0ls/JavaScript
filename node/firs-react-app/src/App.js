@@ -1,12 +1,17 @@
-import Heading1 from "./components/heading1/heading1";
+import Header from "./components/Header/Header";
+import Main from "./components/Main/Main";
+import Footer from "./components/Footer/Footer";
+
 
 function App() {
   return (
     // JSX разметка
     <div className="App">
-      <Heading1 />
-      <h2>Heading 2</h2>
-      <Heading1 />
+      <Header />
+      <Main />
+      <Footer />
+      {/* лессон */}
+
     </div>
   );
 }
