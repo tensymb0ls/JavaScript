@@ -1,3 +1,4 @@
+import style from "./Navigation.module.css";
 // const listItems = ['Home', 'Plans', 'FAQ', 'Documentation'];
 const listItemsObjects = [
     { text: 'Home', link: 'https://google.com' },
@@ -7,7 +8,7 @@ const listItemsObjects = [
 
 function Navigation() {
     return (
-        <nav>
+        <nav className={style.nav}>
             <ul>
                 {listItemsObjects.map((item) => (
                     <li><a href={item.link}>{item.text}</a></li>
