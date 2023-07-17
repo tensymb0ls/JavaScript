@@ -8,7 +8,7 @@ const listItemsObjects = [
 
 function Navigation() {
     return (
-        <nav className={style.nav}>
+        <nav tagName={style.nav}>
             <ul>
                 {listItemsObjects.map((item) => (
                     <li><a href={item.link}>{item.text}</a></li>
