@@ -45,13 +45,13 @@ textarea:focus {
   border: 1.5px solid #6d79cd;
 }
 
-.btn.new {
+.btn.new:hover {
   background-color: rgb(234, 97, 97);
   border: 2px solid rgb(232, 98, 98);
   margin-bottom: 10px;
 }
 
-.btn.new:hover {
+.btn.new {
   background-color: rgb(195, 92, 92);
   border: 2px solid rgb(195, 92, 92);
 }
@@ -83,4 +83,7 @@ textarea:focus {
 .btn.red:hover {
   background-color: rgb(255, 141, 141);
   border: 2px solid rgb(167, 79, 79);
+}
+.taskBody {
+  white-space: pre-line;
 }
