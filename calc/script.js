@@ -23,7 +23,37 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Добавляем обработчик события клика для кнопки "÷"
     division.addEventListener('click', function () {
-        divisionFunc();
+        if (!sessionStorage.getItem('operator') && display.textContent !== '0') { setOperator('/'); }
+        else { clearDisplay(); }
+    });
+
+    // Добавляем обработчик события клика для кнопки "*"
+    multiply.addEventListener('click', function () {
+        if (!sessionStorage.getItem('operator') && display.textContent !== '0') { setOperator('*'); }
+        else { clearDisplay(); }
+    });
+
+    // Добавляем обработчик события клика для кнопки "-"
+    minus.addEventListener('click', function () {
+        if (!sessionStorage.getItem('operator') && display.textContent !== '0') { setOperator('-'); }
+        else { clearDisplay(); }
+    });
+
+    // Добавляем обработчик события клика для кнопки "+"
+    plus.addEventListener('click', function () {
+        if (!sessionStorage.getItem('operator') && display.textContent !== '0') { setOperator('+'); }
+        else { clearDisplay(); }
+    });
+
+    // Добавляем обработчик события клика для кнопки "%"
+    percent.addEventListener('click', function () {
+        calculatePercentage();
+    });
+
+
+    // Добавляем обработчик события клика для кнопки "="
+    equals.addEventListener('click', function () {
+        calculate();
     });
 
     // Добавляем обработчик события клика для каждого элемента с классом "grey"
@@ -48,11 +78,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // Функция для очистки содержимого дисплея калькулятора
     function clearDisplay() {
         display.textContent = '0';
+
     }
 
-    // Функция для очистки переменной currentValue в sessionStorage
+    // Функция для очистки переменной currentValue м operator в sessionStorage
     function clearCurrentValue() {
         sessionStorage.removeItem('currentValue');
+        sessionStorage.removeItem('operator');
     }
 
     // Функция для добавления или удаления отрицательного знака числа на дисплее
@@ -70,25 +102,74 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Функция для выполнения операции деления
-    function divisionFunc() {
+    // Функция для сохранения оператора и текущего значения в sessionStorage
+    function setOperator(operator) {
         let currentValue = parseFloat(display.textContent);
 
-        // Проверяем, есть ли значение в sessionStorage
-        if (sessionStorage.getItem('currentValue') !== null) {
-            currentValue = parseFloat(sessionStorage.getItem('currentValue'));
-        }
+        // Сохраняем текущее значение и оператор в sessionStorage
+        sessionStorage.setItem('currentValue', currentValue);
+        sessionStorage.setItem('operator', operator);
+
+        // Очищаем дисплей для ввода следующего числа
+        clearDisplay();
+    }
+
+    // Функция для вычисления процента от текущего значения на дисплее
+    function calculatePercentage() {
+        let currentValue = parseFloat(display.textContent);
 
         // Если текущее значение не является числом или равно 0, выходим из функции
         if (isNaN(currentValue) || currentValue === 0) {
             return;
         }
 
-        // Выполняем операцию деления и сохраняем результат в sessionStorage
-        let result = currentValue / parseFloat(display.textContent);
-        sessionStorage.setItem('currentValue', result);
-
-        // Отображаем результат на дисплее
-        display.textContent = result.toString();
+        // Вычисляем процент от текущего значения и отображаем результат на дисплее
+        let percentage = currentValue / 100;
+        display.textContent = percentage.toString();
     }
+
+    // Функция для вычисления значения выражения на дисплее и отображения результата в блоке "result"
+    function calculate() {
+        let currentValue = parseFloat(display.textContent);
+        let savedValue = parseFloat(sessionStorage.getItem('currentValue'));
+        const operator = sessionStorage.getItem('operator');
+
+        // Проверяем, есть ли сохраненные значение и оператор
+        if (!isNaN(savedValue) && operator) {
+            // Выполняем операцию в зависимости от сохраненного оператора
+            switch (operator) {
+                case '/':
+                    currentValue = savedValue / (currentValue !== 0 ? currentValue : 1); // Избегаем деления на 0
+                    break;
+                case '*':
+                    currentValue = savedValue * currentValue;
+                    break;
+                case '-':
+                    currentValue = savedValue - currentValue;
+                    break;
+                case '+':
+                    currentValue = savedValue + currentValue;
+                    break;
+                default:
+                    break;
+            }
+
+            const resultDisplay = document.querySelector('.result');
+            if (currentValue.toString().length > 14) {
+                resultDisplay.textContent = currentValue.toString().slice(0, 12) + '...';
+            } else {
+                resultDisplay.textContent = currentValue.toString();
+            }
+            resultDisplay.classList.add('animate-result');
+            setTimeout(() => {
+                resultDisplay.classList.remove('animate-result');
+            }, 100);
+        }
+
+        // Очищаем sessionStorage
+        clearCurrentValue();
+        clearDisplay();
+    }
+
+
 });
